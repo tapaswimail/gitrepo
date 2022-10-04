@@ -30,6 +30,7 @@ Constraints:
 0 <= Data of a node <= 105
 */
 
+//read - https://medium.com/swlh/implement-binary-search-tree-in-javascript-897dcbcc5616
 //read - https://www.educative.io/blog/tree-traversal-algorithms
 //read - https://levelup.gitconnected.com/how-to-traverse-a-tree-using-javascript-c9a79826e819
  
