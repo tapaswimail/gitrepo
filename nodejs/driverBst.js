@@ -13,6 +13,7 @@ for(let i=0;i<=10;i++){
 bstJsonTree=jt.treeify(bst);
 console.log(bstJsonTree);
 console.log(bst.search(9));
-console.log(libBst.inOrder(bst));
-console.log(libBst.preOrder(bst));
-console.log(libBst.postOrder(bst));
+console.log(bst.recursiveInOrder(bst));
+//console.log(bst.recursivePreOrder(bst));
+//console.log(bst.recursivePostOrder(bst));
+console.log(libBst.iterativeInorder(bst));

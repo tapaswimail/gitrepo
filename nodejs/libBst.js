@@ -33,6 +33,7 @@ Constraints:
 //read - https://medium.com/swlh/implement-binary-search-tree-in-javascript-897dcbcc5616
 //read - https://www.educative.io/blog/tree-traversal-algorithms
 //read - https://levelup.gitconnected.com/how-to-traverse-a-tree-using-javascript-c9a79826e819
+// read - https://medium.com/@amyhuajs/the-iterative-solution-to-inorder-tree-traversal-easily-explained-f25f09e5435b
  
 
 
@@ -73,33 +74,46 @@ var bst=class Node {
       }
       return false
     }
+   recursiveInOrder(root) { 
+      root.left && this.recursiveInOrder(root.left);
+      console.log(root.val+",");
+      root.right && this.recursiveInOrder(root.right); 
+    }
 
-   
+    recursivePreOrder(node) { 
+      console.log(node.val+","); 
+      node.left && this.recursivePreOrder(node.left); 
+      node.right && this.recursivePreOrder(node.right); 
+    } 
+    
+    recursivePostOrder(node) { 
+      node.left && this.recursivePostOrder(node.left); 
+      node.right && this.recursivePostOrder(node.right); 
+      console.log(node.val+","); 
+    }    
   };
 
-  function inOrder(root) { 
-    root.left && inOrder(root.left) 
-    console.log(root.val+",") 
-    root.right && inOrder(root.right) 
- } 
+  function iterativeInorder(root) {
+    var callStack = [];
+    var current = root;
+    var result = [];  
+    while (true) {    
+      while (!!current) {
+          callStack.push(current);
+          current = current.left;
+      }    
+      if (callStack.length == 0) break;
+      var lastCurrent = callStack.pop();
+      result.push(lastCurrent.val);
+      current = lastCurrent.right;  
+    }
+    return result;
+  }
 
- function preOrder(node) { 
-  console.log(node.val+",") 
-  node.left && this.preOrder(node.left) 
-  node.right && this.preOrder(node.right) 
-} 
-
-function postOrder(node) { 
-  node.left && this.postOrder(node.left) 
-  node.right && this.postOrder(node.right) 
-  console.log(node.val+","); 
-} 
 
   module.exports = {
     node: bst,
-    inOrder:inOrder,
-    preOrder:preOrder,
-    postOrder:postOrder
+    iterativeInorder:iterativeInorder
   };
   
   

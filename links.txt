@@ -1,0 +1,16 @@
+Making a bittorrent client in nodejs (hobby)
+---------------------------------------
+https://allenkim67.github.io/programming/2016/05/04/how-to-make-your-own-bittorrent-client.html
+
+Binary Search Tree
+---------------------
+https://medium.com/swlh/implement-binary-search-tree-in-javascript-897dcbcc5616
+https://www.educative.io/blog/tree-traversal-algorithms
+https://levelup.gitconnected.com/how-to-traverse-a-tree-using-javascript-c9a79826e819
+https://medium.com/@amyhuajs/the-iterative-solution-to-inorder-tree-traversal-easily-explained-f25f09e5435b
+
+Free APIs
+-----------
+https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
+https://dev.to/isalevine/three-ways-to-retrieve-json-from-the-web-using-node-js-3c88
+https://github.com/public-apis/public-apis
