@@ -1,0 +1,59 @@
+/*I have a many sheets in a google sheet. 
+Each Sheet contains tables of same structures. 
+The following google script merges all the rows in a separate google sheet.
+*/
+
+function mergeSheets() {
+  // Get the active spreadsheet
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  
+  // Create a new sheet for the merged data
+  var mergedSheet = spreadsheet.insertSheet('Merged Data');
+  
+  // Get all sheets in the spreadsheet
+  var sheets = spreadsheet.getSheets();
+  
+  var headerRow = [];
+  var allData = [];
+  var firstSheet = true;
+  
+  // Iterate through all sheets
+  for (var i = 0; i < sheets.length; i++) {
+    var sheet = sheets[i];
+    
+    // Skip the merged sheet
+    if (sheet.getName() == 'Merged Data') continue;
+    
+    // Get the data range of the current sheet
+    var range = sheet.getDataRange();
+    var data = range.getValues();
+    
+    // If this is the first sheet, get the header row
+    if (firstSheet) {
+      headerRow = data[0];
+      allData.push(headerRow);
+      firstSheet = false;
+    }
+    
+    // Add all rows except header from current sheet to allData
+    for (var j = 1; j < data.length; j++) {
+      allData.push(data[j]);
+    }
+  }
+  
+  // Write all data to the merged sheet
+  if (allData.length > 0) {
+    var targetRange = mergedSheet.getRange(1, 1, allData.length, headerRow.length);
+    targetRange.setValues(allData);
+    
+    // Auto-resize columns to fit the content
+    mergedSheet.autoResizeColumns(1, headerRow.length);
+  }
+  
+  // Optional: Add formatting to header row
+  if (headerRow.length > 0) {
+    var headerRange = mergedSheet.getRange(1, 1, 1, headerRow.length);
+    headerRange.setFontWeight('bold');
+    headerRange.setBackground('#E0E0E0');
+  }
+}
